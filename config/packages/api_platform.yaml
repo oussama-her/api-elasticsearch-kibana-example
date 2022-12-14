@@ -1,0 +1,18 @@
+api_platform:
+  title: API - ElasticSearch
+  version: 1.0.0
+  # Good cache defaults for REST APIs
+  defaults:
+    stateless: true
+    cache_headers:
+      vary: ['Content-Type', 'Authorization', 'Origin']
+
+  mapping:
+    paths: [ '%kernel.project_dir%/src/Entity' ]
+
+  elasticsearch:
+    hosts: [ '%env(ELASTICSEARCH_HOST_PORT)%' ]
+    mapping:
+      App\Entity\Product:
+        index: app
+        type: product
